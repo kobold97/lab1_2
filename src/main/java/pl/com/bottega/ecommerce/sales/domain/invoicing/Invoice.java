@@ -22,50 +22,50 @@ import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 public class Invoice {
 
-    private ClientData client;
+	private ClientData client;
 
-    private Money net;
+	private Money net;
 
-    private Money gros;
+	private Money gros;
 
-    private List<InvoiceLine> items;
+	private List<InvoiceLine> items;
 
-    private Id id;
+	private Id id;
 
-    Invoice(Id invoiceId, ClientData client) {
-        this.id = invoiceId;
-        this.client = client;
-        this.items = new ArrayList<>();
+	Invoice(Id invoiceId, ClientData client) {
+		this.id = invoiceId;
+		this.client = client;
+		this.items = new ArrayList<>();
 
-        this.net = Money.ZERO;
-        this.gros = Money.ZERO;
-    }
+		this.net = Money.ZERO;
+		this.gros = Money.ZERO;
+	}
 
-    public void addItem(InvoiceLine item) {
-        items.add(item);
+	public void addItem(InvoiceLine item) {
+		items.add(item);
 
-        net = net.add(item.getNet());
-        gros = gros.add(item.getGros());
-    }
+		net = net.add(item.getNet());
+		gros = gros.add(item.getGros());
+	}
 
-    /**
-     *
-     * @return immutable projection
-     */
-    public List<InvoiceLine> getItems() {
-        return Collections.unmodifiableList(items);
-    }
+	/**
+	 *
+	 * @return immutable projection
+	 */
+	public List<InvoiceLine> getItems() {
+		return Collections.unmodifiableList(items);
+	}
 
-    public ClientData getClient() {
-        return client;
-    }
+	public ClientData getClient() {
+		return client;
+	}
 
-    public Money getNet() {
-        return net;
-    }
+	public Money getNet() {
+		return net;
+	}
 
-    public Money getGros() {
-        return gros;
-    }
+	public Money getGros() {
+		return gros;
+	}
 
 }

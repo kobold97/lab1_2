@@ -22,20 +22,20 @@ import pl.com.bottega.ecommerce.sharedkernel.Money;
 public class BookKeeper {
 
 	public Invoice issuance(ClientData client, List<RequestItem> items, CountryTax countryTax) {
-        Invoice invoice = new Invoice(Id.generate(), client);
-		
+		Invoice invoice = new Invoice(Id.generate(), client);
+
 		for (RequestItem item : items) {
 
 			Money net = item.getTotalCost();
 			Tax tax = null;
-			
+
 			tax = countryTax.calculateTax(items);
 
 			InvoiceLine invoiceLine = new InvoiceLine(item.getProductData(), item.getQuantity(), net, tax);
 			invoice.addItem(invoiceLine);
 		}
 
-		return this.invoice;
+		return invoice;
 	}
 
 }
