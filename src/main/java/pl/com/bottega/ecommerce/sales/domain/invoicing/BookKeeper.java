@@ -27,17 +27,14 @@ public class BookKeeper {
 		this.invoice = invoice;
 	}
 
-	public Invoice issuance(List<RequestItem> items, String country) {
+	public Invoice issuance(List<RequestItem> items, CountryTax countryTax) {
 
 		for (RequestItem item : items) {
 
 			Money net = item.getTotalCost();
 			Tax tax = null;
-
-			switch (country) {
-			case "Poland":
-				tax = poland.calculateTax(item);
-			}
+			
+			tax = countryTax.calculateTax(items);
 
 			InvoiceLine invoiceLine = new InvoiceLine(item.getProductData(), item.getQuantity(), net, tax);
 			invoice.addItem(invoiceLine);
