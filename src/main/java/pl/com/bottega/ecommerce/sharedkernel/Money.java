@@ -85,7 +85,7 @@ public class Money {
         return isZero(denomination) || isZero(money.denomination) || currencyCode.equals(money.getCurrencyCode());
     }
 
-    private boolean isZero(BigDecimal testedValue) {
+    public boolean isZero(BigDecimal testedValue) {
         return BigDecimal.ZERO.compareTo(testedValue) == 0;
     }
 
