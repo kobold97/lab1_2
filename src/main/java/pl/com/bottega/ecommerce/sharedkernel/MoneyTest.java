@@ -43,6 +43,19 @@ public class MoneyTest {
 		assertThat(first.subtract(second).equals(new Money(35)), is (true));
 	}
 	
+	@Test
+	public void testGreaterThan() {
+		Money first = new Money(50);
+		Money second = new Money(40);
+		
+		assertThat(first.greaterThan(second), is(true));
+	}
 	
-	
+	@Test
+	public void testLessThan() {
+		Money first = new Money(50);
+		Money second = new Money(40);
+		
+		assertThat(first.lessThan(second), is(false));
+	}
 }
